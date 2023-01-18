@@ -1,7 +1,4 @@
-import sys
-from os import getcwd
 from pathlib import Path
-sys.path.append(str(Path(getcwd()).parent.joinpath('src')))
 from src.helper_functions import add_metadata_to_barcodes, write_features_and_mtx, create_h5ad
 
 #Existing SJs to mtx

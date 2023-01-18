@@ -7,6 +7,3 @@ STAR --runThreadN 12 \
 --soloOutFileNames all_cells/ features.tsv barcodes.tsv matrix.mtx \
 --soloStrand Unstranded \
 --soloFeatures Gene SJ
-
-
-
