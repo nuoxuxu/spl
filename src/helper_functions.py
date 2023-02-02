@@ -72,8 +72,7 @@ def write_features_and_mtx(directory_list, output_dir, suffix):
         features = features.rename(columns = {'unique_y':'unique', 'multi_y':'multi', 'max_overhang_y':'max_overhang'})
 
         with open(Path(output_dir).joinpath("features.tsv"), 'w') as f:
-            features.to_csv(f, sep = '\t', header = None, index = False)
-        print("features.tsv written")
+            features.to_csv(f, sep = '\t', header = None, index = False)# type: ignore     
         combined = pd.merge(combined, features[['start', 'end']].assign(row = features.index), how = 'inner', on = ['start', 'end'])
         mtx = scipy.sparse.coo_matrix((combined['unique'].to_numpy(), (combined['row'].to_numpy(), combined['barcodes'].to_numpy())), dtype=np.int64)
         with open(Path(output_dir).joinpath("matrix.mtx"), "wb") as f:
