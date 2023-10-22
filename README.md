@@ -36,7 +36,7 @@ Make sure you are using STAR 2.7.10b (not available on the SCC), to install STAR
 ```bash {cmd}
 conda install -c bioconda star
 ```
-An example of a STARsolo command with parameters suitable for generating count matrices for downstream analyses in scQuint or Scanpy.
+An example of a STARsolo command with parameters suitable for generating count matrices from FASTQ files from SMARTseq.
 
 ```bash {cmd}
 STAR --runThreadN 12 \
@@ -51,5 +51,5 @@ STAR --runThreadN 12 \
 ```
 Submitting the script as a Slurm job using qbatch. Running STARsolo on all samples in the Gouwens dataset (more than 4000 cells) took around 43 hours.
 ```bash {cmd}
-qbatch -w 48:00:00 --ppj 12 --mem 60G -- bash STARsolo.sh
+sbatch -t 0-48:0 -N 12 -J STARsolo -o STARsolo.out --mem 60G --wrap="./STARsolo.sh"
 ```
